@@ -16,7 +16,11 @@ except json.JSONDecodeError:
     exit(1)
 
 # Generate design
-design = generate_design(config)
+try:
+    design = generate_design(config)
+except Exception as e:
+    print(f'Failed to generate design: {str(e)}')
+    exit(1)
 
 # Preview design
 print('Previewing design...')
