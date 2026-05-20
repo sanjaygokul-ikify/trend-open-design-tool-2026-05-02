@@ -11,8 +11,8 @@ try:
 except FileNotFoundError:
     print('Configuration file not found. Please ensure config.json exists in the current directory.')
     exit(1)
-except json.JSONDecodeError:
-    print('Invalid configuration file. Please ensure config.json contains valid JSON.')
+except json.JSONDecodeError as e:
+    print(f'Invalid configuration file: {str(e)}')
     exit(1)
 
 # Generate design
@@ -39,4 +39,9 @@ if __name__ == '__main__':
     # Run the Open Design Tool
     print('Running Open Design Tool...')
     # Start the design generation process
-    generate_design(config)
+    try:
+        design = generate_design(config)
+        print(design)
+    except Exception as e:
+        print(f'Failed to generate design: {str(e)}')
+        exit(1)
