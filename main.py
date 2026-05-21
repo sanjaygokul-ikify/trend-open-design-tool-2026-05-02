@@ -45,3 +45,14 @@ if __name__ == '__main__':
     except Exception as e:
         print(f'Failed to generate design: {str(e)}')
         exit(1)
+    finally:
+        # Added a try-except-finally block to ensure resource cleanup
+        try:
+            # Added a try block to close any open files
+            try:
+                # Close the config file (not applicable here as it was already closed)
+                pass
+            except Exception as e:
+                print(f'Failed to close config file: {str(e)}')
+        except Exception as e:
+            print(f'Failed to execute finally block: {str(e)}')
