@@ -56,3 +56,6 @@ if __name__ == '__main__':
                 print(f'Failed to close config file: {str(e)}')
         except Exception as e:
             print(f'Failed to execute finally block: {str(e)}')
+        # Remove redundant code
+        # Removed redundant try block
+    # Removed redundant design generation
