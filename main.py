@@ -3,11 +3,12 @@
 import os
 import json
 from design_generator import generate_design
+from typing import Dict
 
 # Load configuration
 try:
     with open('config.json') as f:
-        config = json.load(f)
+        config: Dict[str, str] = json.load(f)
 except FileNotFoundError:
     print('Configuration file not found. Please ensure config.json exists in the current directory.')
     exit(1)
