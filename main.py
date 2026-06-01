@@ -28,20 +28,24 @@ print('Previewing design...')
 print(design)
 
 # Export design
-print('Exporting design...')
-try:
-    with open('design.html', 'w') as f:
-        f.write(design)
-except OSError as e:
-    print(f'Failed to export design: {str(e)}')
-    exit(1)
+def export_design(design: str) -> None:
+    try:
+        with open('design.html', 'w') as f:
+            f.write(design)
+    except OSError as e:
+        print(f'Failed to export design: {str(e)}')
+        exit(1)
+
+export_design(design)
 
 if __name__ == '__main__':
     # Run the Open Design Tool
     print('Running Open Design Tool...')
     try:
+        config: Dict[str, str] = json.load(open('config.json'))
         design = generate_design(config)
         print(design)
+        export_design(design)
     except Exception as e:
         print(f'Failed to generate design: {str(e)}')
         exit(1)
