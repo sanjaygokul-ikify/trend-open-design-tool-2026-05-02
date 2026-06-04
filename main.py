@@ -47,5 +47,5 @@ if __name__ == '__main__':
         print(design)
         export_design(design)
     except Exception as e:
-        print(f'Failed to generate design: {str(e)}')
+        print(f'An error occurred: {str(e)}')
         exit(1)
