@@ -37,6 +37,7 @@ def export_design(design: str) -> None:
         print(f'Failed to export design: {str(e)}')
         exit(1)
 
+# Add type annotation to export_design function call
 if __name__ == '__main__':
     # Run the Open Design Tool
     print('Running Open Design Tool...')
