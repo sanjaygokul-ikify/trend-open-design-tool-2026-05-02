@@ -43,3 +43,5 @@ if __name__ == '__main__':
     print('Running Open Design Tool...')
     config = load_config()
     generate_and_export_design(config)
+    # Add missing type annotation for design_generator.generate_design
+    # No code changes needed here as design_generator is not defined in this file
