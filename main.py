@@ -3,7 +3,7 @@
 import os
 import json
 from design_generator import generate_design
-from typing import Dict
+from typing import Dict, Callable
 
 # Load configuration
 def load_config() -> Dict[str, str]:
@@ -37,14 +37,11 @@ def export_design(design: str) -> None:
         print(f'Failed to export design: {str(e)}')
         exit(1)
 
-# Add type annotation to design_generator.generate_design function call
+# Define type annotation for generate_design function
+generate_design: Callable[[Dict[str, str]], str] = generate_design
+
 if __name__ == '__main__':
     # Run the Open Design Tool
     print('Running Open Design Tool...')
     config = load_config()
     generate_and_export_design(config)
-    # Add missing type annotation for design_generator.generate_design
-    # No code changes needed here as design_generator is not defined in this file
-    # Add missing type annotation for design_generator.generate_design
-    from typing import Callable
-    generate_design: Callable[[Dict[str, str]], str] = generate_design
