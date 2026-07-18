@@ -40,8 +40,29 @@ def export_design(design: str) -> None:
 # Define type annotation for generate_design function
 generate_design: Callable[[Dict[str, str]], str] = generate_design
 
+def export_design_error_handler(e: Exception) -> None:
+    print(f'Error exporting design: {str(e)}')
+
+# Refactored export_design function with better error handling
+def export_design_refactored(design: str) -> None:
+    try:
+        with open('design.html', 'w') as f:
+            f.write(design)
+    except OSError as e:
+        export_design_error_handler(e)
+
 if __name__ == '__main__':
     # Run the Open Design Tool
     print('Running Open Design Tool...')
     config = load_config()
-    generate_and_export_design(config)
+    generate_and_export_design_refactored(config)
+
+# Refactored generate_and_export_design function with better error handling
+def generate_and_export_design_refactored(config: Dict[str, str]) -> None:
+    try:
+        design = generate_design(config)
+        print('Previewing design...')
+        print(design)
+        export_design_refactored(design)
+    except Exception as e:
+        print(f'Failed to generate or export design: {str(e)}')
