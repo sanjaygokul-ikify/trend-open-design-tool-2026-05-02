@@ -23,7 +23,7 @@ def generate_and_export_design(config: Dict[str, str]) -> None:
         design = generate_design(config)
         print('Previewing design...')
         print(design)
-        export_design(design)
+        export_design_refactored(design)
     except Exception as e:
         print(f'Failed to generate or export design: {str(e)}')
         exit(1)
@@ -51,12 +51,6 @@ def export_design_refactored(design: str) -> None:
     except OSError as e:
         export_design_error_handler(e)
 
-if __name__ == '__main__':
-    # Run the Open Design Tool
-    print('Running Open Design Tool...')
-    config = load_config()
-    generate_and_export_design_refactored(config)
-
 # Refactored generate_and_export_design function with better error handling
 def generate_and_export_design_refactored(config: Dict[str, str]) -> None:
     try:
@@ -66,3 +60,9 @@ def generate_and_export_design_refactored(config: Dict[str, str]) -> None:
         export_design_refactored(design)
     except Exception as e:
         print(f'Failed to generate or export design: {str(e)}')
+
+if __name__ == '__main__':
+    # Run the Open Design Tool
+    print('Running Open Design Tool...')
+    config = load_config()
+    generate_and_export_design(config)
