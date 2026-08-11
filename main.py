@@ -65,4 +65,4 @@ if __name__ == '__main__':
     # Run the Open Design Tool
     print('Running Open Design Tool...')
     config = load_config()
-    generate_and_export_design(config)
+    generate_and_export_design_refactored(config)
